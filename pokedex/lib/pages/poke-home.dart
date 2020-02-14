@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class PokeHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container();

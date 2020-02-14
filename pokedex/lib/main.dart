@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/pages/home.dart';
+import 'package:pokedex/pages/poke-home.dart';
 import 'package:pokedex/res/my-colors.dart';
 
 void main() => runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: MyColors.mainBlue,
           title: Text('Pokemon'),
         ),
-        body: HomePage(),
+        body: PokeHomePage(),
       ),
     );
   }
