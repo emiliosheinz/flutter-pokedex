@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum PokemonType {
+enum PokeType {
   grass,
   poison,
   fire,
@@ -11,24 +11,24 @@ enum PokemonType {
   electric,
 }
 
-extension PokemonTypeExtension on PokemonType {
+extension PokeTypeExtension on PokeType {
   Color get color {
     switch (this) {
-      case PokemonType.grass:
+      case PokeType.grass:
         return Colors.green;
-      case PokemonType.poison:
+      case PokeType.poison:
         return Colors.purple;
-      case PokemonType.fire:
+      case PokeType.fire:
         return Colors.orange;
-      case PokemonType.flying:
+      case PokeType.flying:
         return Colors.blue;
-      case PokemonType.water:
+      case PokeType.water:
         return Colors.blueAccent;
-      case PokemonType.bug:
+      case PokeType.bug:
         return Colors.greenAccent;
-      case PokemonType.normal:
+      case PokeType.normal:
         return Colors.grey;
-      case PokemonType.electric:
+      case PokeType.electric:
         return Colors.yellow;
       default:
         return Colors.white;
