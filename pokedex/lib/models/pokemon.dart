@@ -1,4 +1,4 @@
-class Pokemon {
+class PokemonModel {
   String name;
   String id;
   String image;
