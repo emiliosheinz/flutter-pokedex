@@ -40,9 +40,11 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
       stats.add(PokeStat.fromJson(stat, mainType.color));
     });
 
-    setState(() {
-      pokemonStats = stats;
-    });
+    if (mounted) {
+      setState(() {
+        pokemonStats = stats;
+      });
+    }
   }
 
   _renderPokemonImage() {
