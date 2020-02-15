@@ -5,4 +5,5 @@ class MyColors {
   static Color emperor = Color(0xff4F4F4F);
   static Color silverChalice = Color(0xffA4A4A4);
   static Color dustyGray = Color(0xff979797);
+  static Color gallery = Color(0xffF0F0F0);
 }

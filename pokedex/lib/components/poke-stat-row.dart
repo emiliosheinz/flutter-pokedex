@@ -1,25 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/poke-stat.dart';
+import 'package:pokedex/res/my-colors.dart';
 
-class PokeStatRow extends StatelessWidget {
+class PokeStatRow extends StatefulWidget {
   final PokeStat stat;
-  final GlobalKey progressBarKey = GlobalKey();
 
   PokeStatRow({@required this.stat});
+
+  @override
+  _PokeStatRowState createState() => _PokeStatRowState();
+}
+
+class _PokeStatRowState extends State<PokeStatRow> {
+  final GlobalKey progressBarKey = GlobalKey();
+  double barWidth = 0;
+
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _calculateBarWidth(),
+    );
+  }
 
   _calculateBarWidth() {
     final keyContext = progressBarKey.currentContext;
 
     if (keyContext != null) {
       final box = keyContext.findRenderObject() as RenderBox;
-      return box.size.width * (stat.value / 100);
+      setState(() {
+        barWidth = box.size.width * (widget.stat.value / 100);
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.addPostFrameCallback(_calculateBarWidth);
     return Container(
       margin: EdgeInsets.all(5),
       child: Row(
@@ -27,11 +43,11 @@ class PokeStatRow extends StatelessWidget {
           Expanded(
             flex: 30,
             child: Text(
-              stat.name.toUpperCase(),
+              widget.stat.name.toUpperCase(),
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
-                color: stat.color,
+                color: widget.stat.color,
               ),
             ),
           ),
@@ -41,7 +57,7 @@ class PokeStatRow extends StatelessWidget {
           Expanded(
             flex: 10,
             child: Text(
-              stat.value.toString(),
+              widget.stat.value.toString(),
             ),
           ),
           SizedBox(
@@ -54,12 +70,13 @@ class PokeStatRow extends StatelessWidget {
               height: 10,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
+                color: MyColors.gallery,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Container(
-                width: _calculateBarWidth(),
+                width: barWidth,
                 decoration: BoxDecoration(
-                  color: stat.color,
+                  color: widget.stat.color,
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
