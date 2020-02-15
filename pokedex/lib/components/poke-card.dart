@@ -40,25 +40,34 @@ class PokeCard extends StatelessWidget {
   }
 
   _renderPokeTypes() {
-    return PokeType(
-      type: PokeTypeEnum.grass,
+    return Row(
+      children: pokemon.types.map((type) {
+        return PokeType(
+          type: type,
+        );
+      }).toList(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Row(
-        children: <Widget>[
-          _renderPokeImage(),
-          SizedBox(
-            width: 15,
-          ),
-          _renderPokeText(),
-          Spacer(),
-          _renderPokeTypes()
-        ],
+    return InkWell(
+      onTap: () {},
+      highlightColor: Color.fromRGBO(255, 255, 255, 0.6),
+      splashColor: pokemon.types[0].color,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Row(
+          children: <Widget>[
+            _renderPokeImage(),
+            SizedBox(
+              width: 15,
+            ),
+            _renderPokeText(),
+            Spacer(),
+            _renderPokeTypes()
+          ],
+        ),
       ),
     );
   }

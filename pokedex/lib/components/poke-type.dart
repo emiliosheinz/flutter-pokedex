@@ -11,6 +11,7 @@ class PokeType extends StatelessWidget {
     return Container(
       width: 30,
       height: 30,
+      margin: EdgeInsets.only(right: 10, left: 10),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: type.color,
@@ -22,11 +23,7 @@ class PokeType extends StatelessWidget {
           )
         ],
       ),
-      child: Icon(
-        Icons.bug_report,
-        color: Colors.white,
-        size: 20,
-      ),
+      child: Center(child: Image.asset(type.icon)),
     );
   }
 }

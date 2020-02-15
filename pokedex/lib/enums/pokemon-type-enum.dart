@@ -34,4 +34,27 @@ extension PokeTypeEnumExtension on PokeTypeEnum {
         return Colors.white;
     }
   }
+
+  String get icon {
+    switch (this) {
+      case PokeTypeEnum.grass:
+        return 'assets/images/grass.png';
+      case PokeTypeEnum.poison:
+        return 'assets/images/poison.png';
+      case PokeTypeEnum.fire:
+        return 'assets/images/fire.png';
+      case PokeTypeEnum.flying:
+        return 'assets/images/flying.png';
+      case PokeTypeEnum.water:
+        return 'assets/images/water.png';
+      case PokeTypeEnum.bug:
+        return 'assets/images/bug.png';
+      case PokeTypeEnum.normal:
+        return 'assets/images/normal.png';
+      case PokeTypeEnum.electric:
+        return 'assets/images/electric.png';
+      default:
+        return '';
+    }
+  }
 }
