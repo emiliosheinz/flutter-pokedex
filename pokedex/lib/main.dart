@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: MyColors.mainBlue,
+          backgroundColor: MyColors.malibu,
           title: Text('Pokemon'),
         ),
         body: PokeHomePage(),
