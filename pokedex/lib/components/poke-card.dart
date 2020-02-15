@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/components/poke-type.dart';
 import 'package:pokedex/enums/pokemon-type-enum.dart';
 import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/pages/poke-details.dart';
 import 'package:pokedex/res/my-colors.dart';
 
 class PokeCard extends StatelessWidget {
@@ -52,7 +53,12 @@ class PokeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PokeDetailsPage()),
+        );
+      },
       highlightColor: Color.fromRGBO(255, 255, 255, 0.6),
       splashColor: pokemon.types[0].color,
       child: Padding(

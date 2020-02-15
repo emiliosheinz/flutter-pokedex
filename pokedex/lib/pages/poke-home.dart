@@ -1,11 +1,8 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/components/poke-card.dart';
-import 'package:pokedex/components/poke-type.dart';
 import 'package:pokedex/enums/pokemon-type-enum.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/res/my-colors.dart';
@@ -60,21 +57,33 @@ class _PokeHomePageState extends State<PokeHomePage> {
     );
   }
 
+  _renderContent() {
+    if (isLoading) {
+      return Center(
+        child: CupertinoActivityIndicator(
+          radius: 15,
+        ),
+      );
+    }
+
+    return Container(
+      child: ListView.separated(
+        itemBuilder: _buildPokeCards,
+        itemCount: pokemonsList.length,
+        separatorBuilder: (context, index) => Divider(
+          color: MyColors.dustyGray,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? Center(
-            child: CupertinoActivityIndicator(
-              radius: 15,
-            ),
-          )
-        : Container(
-            child: ListView.separated(
-                itemBuilder: _buildPokeCards,
-                itemCount: pokemonsList.length,
-                separatorBuilder: (context, index) => Divider(
-                      color: MyColors.dustyGray,
-                    )),
-          );
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: MyColors.malibu,
+          title: Text('Pokemon'),
+        ),
+        body: _renderContent());
   }
 }
