@@ -10,12 +10,26 @@ class PokeCard extends StatelessWidget {
 
   PokeCard({@required this.pokemon});
 
+  _onPokemonPress(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PokeDetailsPage(
+          pokemon: pokemon,
+        ),
+      ),
+    );
+  }
+
   _renderPokeImage() {
-    return SizedBox(
-      height: 50,
-      width: 50,
-      child: Image.network(
-        pokemon.image,
+    return Hero(
+      tag: pokemon.id,
+      child: SizedBox(
+        height: 50,
+        width: 50,
+        child: Image.network(
+          pokemon.image,
+        ),
       ),
     );
   }
@@ -54,10 +68,7 @@ class PokeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => PokeDetailsPage()),
-        );
+        _onPokemonPress(context);
       },
       highlightColor: Color.fromRGBO(255, 255, 255, 0.6),
       splashColor: pokemon.types[0].color,

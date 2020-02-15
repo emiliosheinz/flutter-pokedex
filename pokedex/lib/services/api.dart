@@ -13,4 +13,8 @@ class PokeApi {
   Future<Response> listPokemons() {
     return _getHttp('http://localhost:3000/list');
   }
+
+  Future<Response> getPokemonDetails(int pokeId) {
+    return _getHttp('http://localhost:3000/details/$pokeId');
+  }
 }
