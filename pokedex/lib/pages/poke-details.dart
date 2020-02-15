@@ -1,45 +1,103 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex/components/poke-loader.dart';
+import 'package:pokedex/components/poke-stat-row.dart';
 import 'package:pokedex/enums/pokemon-type-enum.dart';
+import 'package:pokedex/models/poke-stat.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/res/my-colors.dart';
+import 'package:pokedex/services/api.dart';
 
-class PokeDetailsPage extends StatelessWidget {
+class PokeDetailsPage extends StatefulWidget {
   final PokemonModel pokemon;
 
   PokeDetailsPage({@required this.pokemon});
 
+  @override
+  _PokeDetailsPageState createState() => _PokeDetailsPageState();
+}
+
+class _PokeDetailsPageState extends State<PokeDetailsPage> {
+  List<PokeStat> pokemonStats;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _getPokemonDetails();
+  }
+
+  _getPokemonDetails() async {
+    List<PokeStat> stats = [];
+    PokeTypeEnum mainType = widget.pokemon.types.first;
+
+    Response resp = await PokeApi().getPokemonDetails(widget.pokemon.id);
+    final pokemonDetails = JsonDecoder().convert(resp.toString());
+
+    pokemonDetails['stats'].forEach((stat) {
+      stats.add(PokeStat.fromJson(stat, mainType.color));
+    });
+
+    setState(() {
+      pokemonStats = stats;
+    });
+  }
+
   _renderPokemonImage() {
     return Hero(
-      tag: pokemon.id,
+      tag: widget.pokemon.id,
       child: SizedBox(
         height: 120,
         width: 120,
-        child: Image.network(pokemon.image),
+        child: Image.network(widget.pokemon.image),
       ),
     );
   }
 
-  _renderPokemonStats() {
+  Widget _renderPokemonStats() {
+    if (pokemonStats == null) {
+      return Center(
+        child: PokeLoader(),
+      );
+    }
+
+    return Column(
+      children: pokemonStats.map((stat) {
+        print(stat);
+        return PokeStatRow(
+          stat: stat,
+        );
+      }).toList(),
+    );
+  }
+
+  _renderPokemonInfo() {
     return Column(
       children: <Widget>[
         SizedBox(
           height: 50,
         ),
         Text(
-          pokemon.name,
+          widget.pokemon.name,
           style: TextStyle(
             color: MyColors.emperor,
             fontSize: 25,
             fontWeight: FontWeight.w700,
           ),
-        )
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        _renderPokemonStats(),
       ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    PokeTypeEnum mainType = pokemon.types.first;
+    PokeTypeEnum mainType = widget.pokemon.types.first;
 
     return Scaffold(
       body: Stack(
@@ -59,7 +117,7 @@ class PokeDetailsPage extends StatelessWidget {
                   ),
                 ),
                 child: Center(
-                  child: _renderPokemonStats(),
+                  child: _renderPokemonInfo(),
                 ),
               ),
             ),
