@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/components/poke-card.dart';
+import 'package:pokedex/components/poke-loader.dart';
 import 'package:pokedex/enums/pokemon-type-enum.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/res/my-colors.dart';
@@ -60,8 +61,10 @@ class _PokeHomePageState extends State<PokeHomePage> {
   _renderContent() {
     if (isLoading) {
       return Center(
-        child: CupertinoActivityIndicator(
-          radius: 15,
+        child: SizedBox(
+          height: 25,
+          width: 25,
+          child: PokeLoader(),
         ),
       );
     }
