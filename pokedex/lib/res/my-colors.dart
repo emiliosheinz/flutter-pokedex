@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-  static Color mainBlue = Color.fromRGBO(110, 149, 253, 1);
+  static Color malibu = Color.fromRGBO(110, 149, 253, 1);
+  static Color emperor = Color(0xff4F4F4F);
+  static Color silverChalice = Color(0xffA4A4A4);
 }
