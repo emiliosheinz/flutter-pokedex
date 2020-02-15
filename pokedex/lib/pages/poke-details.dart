@@ -21,6 +21,7 @@ class PokeDetailsPage extends StatefulWidget {
 
 class _PokeDetailsPageState extends State<PokeDetailsPage> {
   List<PokeStat> pokemonStats;
+  String pokeDescription = '';
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
     PokeTypeEnum mainType = widget.pokemon.types.first;
 
     Response resp = await PokeApi().getPokemonDetails(widget.pokemon.id);
+    print(resp);
     final pokemonDetails = JsonDecoder().convert(resp.toString());
 
     pokemonDetails['stats'].forEach((stat) {
@@ -43,6 +45,7 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
     if (mounted) {
       setState(() {
         pokemonStats = stats;
+        pokeDescription = pokemonDetails['description'];
       });
     }
   }
@@ -92,6 +95,7 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
         SizedBox(
           height: 20,
         ),
+        Text(pokeDescription),
         _renderPokemonStats(),
       ],
     );
