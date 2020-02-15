@@ -44,6 +44,8 @@ class _PokeStatRowState extends State<PokeStatRow> {
             flex: 30,
             child: Text(
               widget.stat.name.toUpperCase(),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,

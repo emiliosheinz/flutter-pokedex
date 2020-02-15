@@ -61,6 +61,27 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
     );
   }
 
+  _renderName() {
+    return Text(
+      widget.pokemon.name,
+      style: TextStyle(
+        color: MyColors.emperor,
+        fontSize: 25,
+        fontWeight: FontWeight.w700,
+      ),
+    );
+  }
+
+  _renderDescription() {
+    return Text(
+      pokeDescription,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 15,
+      ),
+    );
+  }
+
   Widget _renderPokemonStats() {
     if (pokemonStats == null) {
       return Center(
@@ -68,13 +89,16 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
       );
     }
 
-    return Column(
-      children: pokemonStats.map((stat) {
-        print(stat);
-        return PokeStatRow(
-          stat: stat,
-        );
-      }).toList(),
+    return Container(
+      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+      child: Column(
+        children: pokemonStats.map((stat) {
+          print(stat);
+          return PokeStatRow(
+            stat: stat,
+          );
+        }).toList(),
+      ),
     );
   }
 
@@ -84,18 +108,14 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
         SizedBox(
           height: 50,
         ),
-        Text(
-          widget.pokemon.name,
-          style: TextStyle(
-            color: MyColors.emperor,
-            fontSize: 25,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        _renderName(),
         SizedBox(
           height: 20,
         ),
-        Text(pokeDescription),
+        _renderDescription(),
+        SizedBox(
+          height: 20,
+        ),
         _renderPokemonStats(),
       ],
     );
