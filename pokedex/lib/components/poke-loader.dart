@@ -7,6 +7,8 @@ class PokeLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Platform.isIOS
         ? CupertinoActivityIndicator()
-        : CircularProgressIndicator();
+        : CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+          );
   }
 }
