@@ -105,6 +105,7 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
 
   _renderPokeTypes() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: widget.pokemon.types.map((type) {
         return PokeType(
           type: type,
@@ -125,6 +126,9 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
           height: 20,
         ),
         _renderPokeTypes(),
+        SizedBox(
+          height: 20,
+        ),
         _renderDescription(),
         SizedBox(
           height: 20,
