@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/components/poke-loader.dart';
 import 'package:pokedex/components/poke-stat-row.dart';
+import 'package:pokedex/components/poke-type.dart';
 import 'package:pokedex/enums/pokemon-type-enum.dart';
 import 'package:pokedex/models/poke-stat.dart';
 import 'package:pokedex/models/pokemon.dart';
@@ -102,6 +103,17 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
     );
   }
 
+  _renderPokeTypes() {
+    return Row(
+      children: widget.pokemon.types.map((type) {
+        return PokeType(
+          type: type,
+          isMinimalist: false,
+        );
+      }).toList(),
+    );
+  }
+
   _renderPokemonInfo() {
     return Column(
       children: <Widget>[
@@ -112,6 +124,7 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
         SizedBox(
           height: 20,
         ),
+        _renderPokeTypes(),
         _renderDescription(),
         SizedBox(
           height: 20,
