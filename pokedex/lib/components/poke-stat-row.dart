@@ -78,7 +78,12 @@ class _PokeStatRowState extends State<PokeStatRow> {
               child: Container(
                 width: barWidth,
                 decoration: BoxDecoration(
-                  color: widget.stat.color,
+                  gradient: LinearGradient(
+                    colors: [
+                      widget.stat.color.withOpacity(0.6),
+                      widget.stat.color,
+                    ],
+                  ),
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),

@@ -146,7 +146,14 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
       body: Stack(
         children: <Widget>[
           Container(
-            color: mainType.color,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  mainType.color,
+                  mainType.color.withOpacity(0.4),
+                ],
+              ),
+            ),
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
