@@ -170,6 +170,19 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
             top: MediaQuery.of(context).size.height * 0.20 - 80,
             child: _renderPokemonImage(),
           ),
+          Positioned(
+            left: 10,
+            top: 40,
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              ),
+            ),
+          )
         ],
       ),
     );
