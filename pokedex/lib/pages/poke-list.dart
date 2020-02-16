@@ -46,10 +46,12 @@ class _PokeListPageState extends State<PokeListPage> {
       pokemons.add(PokemonModel.fromJson(pokemon, typesList));
     });
 
-    setState(() {
-      pokemonsList = pokemons;
-      isLoading = false;
-    });
+    if (mounted) {
+      setState(() {
+        pokemonsList = pokemons;
+        isLoading = false;
+      });
+    }
   }
 
   Widget _buildPokeCards(BuildContext context, int index) {
