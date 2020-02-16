@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/components/poke-type.dart';
 import 'package:pokedex/enums/pokemon-type-enum.dart';
 import 'package:pokedex/models/pokemon.dart';
-import 'package:pokedex/pages/poke-details.dart';
+import 'package:pokedex/pages/poke-middle.dart';
 import 'package:pokedex/res/my-colors.dart';
 
 class PokeCard extends StatelessWidget {
@@ -14,7 +14,7 @@ class PokeCard extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PokeDetailsPage(
+        builder: (context) => PokeMiddlePage(
           pokemon: pokemon,
         ),
       ),

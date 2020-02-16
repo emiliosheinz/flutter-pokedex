@@ -84,12 +84,6 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
   }
 
   Widget _renderPokemonStats() {
-    if (pokemonStats == null) {
-      return Center(
-        child: PokeLoader(),
-      );
-    }
-
     return Container(
       padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
       child: Column(
@@ -115,6 +109,27 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
     );
   }
 
+  _renderDelayedData() {
+    if (pokemonStats == null) {
+      return Padding(
+        padding: const EdgeInsets.only(top: 100),
+        child: Center(
+          child: PokeLoader(),
+        ),
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        _renderDescription(),
+        SizedBox(
+          height: 20,
+        ),
+        _renderPokemonStats(),
+      ],
+    );
+  }
+
   _renderPokemonInfo() {
     return Column(
       children: <Widget>[
@@ -129,11 +144,14 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
         SizedBox(
           height: 20,
         ),
-        _renderDescription(),
-        SizedBox(
-          height: 20,
+        AnimatedSwitcher(
+          transitionBuilder: (child, animation) => ScaleTransition(
+            child: child,
+            scale: animation,
+          ),
+          duration: Duration(milliseconds: 150),
+          child: _renderDelayedData(),
         ),
-        _renderPokemonStats(),
       ],
     );
   }
