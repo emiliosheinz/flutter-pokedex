@@ -61,17 +61,20 @@ class _PokeHomePageState extends State<PokeHomePage> {
   _renderAppBar() {
     return AppBar(
       backgroundColor: Colors.white,
-      title: Text('Pokemon'),
+      title: Text(
+        'Pokemon',
+        style: TextStyle(color: Colors.black87),
+      ),
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: <Color>[
-              MyColors.appBar01,
-              MyColors.appBar02,
-              MyColors.appBar03,
-              MyColors.appBar04,
+              MyColors.appBar01.withOpacity(0.6),
+              MyColors.appBar02.withOpacity(0.6),
+              MyColors.appBar03.withOpacity(0.6),
+              MyColors.appBar04.withOpacity(0.6),
             ],
           ),
         ),
@@ -104,6 +107,7 @@ class _PokeHomePageState extends State<PokeHomePage> {
   _renderBottomTab() {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
+      backgroundColor: MyColors.appBar01.withOpacity(0.8),
       selectedItemColor: Colors.black,
       currentIndex: 0,
       items: [
