@@ -58,6 +58,27 @@ class _PokeHomePageState extends State<PokeHomePage> {
     );
   }
 
+  _renderAppBar() {
+    return AppBar(
+      backgroundColor: Colors.white,
+      title: Text('Pokemon'),
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: <Color>[
+              MyColors.appBar01,
+              MyColors.appBar02,
+              MyColors.appBar03,
+              MyColors.appBar04,
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   _renderContent() {
     if (isLoading) {
       return Center(
@@ -80,13 +101,46 @@ class _PokeHomePageState extends State<PokeHomePage> {
     );
   }
 
+  _renderBottomTab() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: Colors.black,
+      currentIndex: 0,
+      items: [
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            height: 35,
+            width: 35,
+            child: Image.asset('assets/images/pokemon.png'),
+          ),
+          title: Text('Pokemon'),
+        ),
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            height: 35,
+            width: 35,
+            child: Image.asset('assets/images/cd.png'),
+          ),
+          title: Text('Moves'),
+        ),
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            height: 35,
+            width: 35,
+            child: Image.asset('assets/images/kandy.png'),
+          ),
+          title: Text('Items'),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: MyColors.malibu,
-          title: Text('Pokemon'),
-        ),
-        body: _renderContent());
+      appBar: _renderAppBar(),
+      body: _renderContent(),
+      bottomNavigationBar: _renderBottomTab(),
+    );
   }
 }
