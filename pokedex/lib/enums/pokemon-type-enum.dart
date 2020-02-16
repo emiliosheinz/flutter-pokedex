@@ -57,4 +57,27 @@ extension PokeTypeEnumExtension on PokeTypeEnum {
         return '';
     }
   }
+
+  String get name {
+    switch (this) {
+      case PokeTypeEnum.grass:
+        return 'Grass';
+      case PokeTypeEnum.poison:
+        return 'Poison';
+      case PokeTypeEnum.fire:
+        return 'Fire';
+      case PokeTypeEnum.flying:
+        return 'Flying';
+      case PokeTypeEnum.water:
+        return 'Water';
+      case PokeTypeEnum.bug:
+        return 'Bug';
+      case PokeTypeEnum.normal:
+        return 'Normal';
+      case PokeTypeEnum.electric:
+        return 'Electric';
+      default:
+        return '';
+    }
+  }
 }
