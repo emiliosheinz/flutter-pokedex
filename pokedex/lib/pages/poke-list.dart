@@ -84,6 +84,9 @@ class _PokeListPageState extends State<PokeListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return _renderContent();
+    return AnimatedSwitcher(
+      duration: Duration(milliseconds: 250),
+      child: _renderContent(),
+    );
   }
 }

@@ -114,7 +114,11 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
       return Padding(
         padding: const EdgeInsets.only(top: 100),
         child: Center(
-          child: PokeLoader(),
+          child: SizedBox(
+            height: 25,
+            width: 25,
+            child: PokeLoader(),
+          ),
         ),
       );
     }

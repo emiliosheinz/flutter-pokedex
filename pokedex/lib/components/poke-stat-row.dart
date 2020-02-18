@@ -75,7 +75,8 @@ class _PokeStatRowState extends State<PokeStatRow> {
                 color: MyColors.gallery,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Container(
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 500),
                 width: barWidth,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex/components/poke-loader.dart';
 import 'package:pokedex/components/poke-type.dart';
 import 'package:pokedex/enums/pokemon-type-enum.dart';
 import 'package:pokedex/models/poke-move.dart';
@@ -48,7 +49,11 @@ class _PokeMovesPageState extends State<PokeMovesPage> {
   _renderContent() {
     if (moves == null) {
       return Center(
-        child: Text('Loading...'),
+        child: SizedBox(
+          height: 25,
+          width: 25,
+          child: PokeLoader(),
+        ),
       );
     }
 
@@ -85,7 +90,10 @@ class _PokeMovesPageState extends State<PokeMovesPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: _renderContent(),
+      child: AnimatedSwitcher(
+        duration: Duration(milliseconds: 250),
+        child: _renderContent(),
+      ),
     );
   }
 }
