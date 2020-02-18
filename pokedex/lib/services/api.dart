@@ -17,4 +17,8 @@ class PokeApi {
   Future<Response> getPokemonDetails(String pokeId) {
     return _getHttp('http://localhost:3000/details/$pokeId');
   }
+
+  Future<Response> getMoves() {
+    return _getHttp('http://localhost:3000/moves');
+  }
 }
