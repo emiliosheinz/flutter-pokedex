@@ -10,6 +10,16 @@ class PokeCard extends StatelessWidget {
 
   PokeCard({@required this.pokemon});
 
+  getFormatedPokemonId() {
+    var zeros = pokemon.id.toString().length;
+
+    if (zeros == 1) {
+      return '#00${pokemon.id}';
+    }
+
+    return '#0${pokemon.id}';
+  }
+
   _onPokemonPress(BuildContext context) {
     Navigator.push(
       context,
@@ -46,7 +56,7 @@ class PokeCard extends StatelessWidget {
               fontWeight: FontWeight.w600),
         ),
         Text(
-          '#001',
+          getFormatedPokemonId(),
           style: TextStyle(
               color: MyColors.silverChalice, fontWeight: FontWeight.w700),
         ),
