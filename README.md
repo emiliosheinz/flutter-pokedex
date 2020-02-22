@@ -1,1 +1,11 @@
-# flutter-pokedex
+# :turtle: Flutter Pokedex
+App that takes a list of pokemons from an API and show them. If you want you can see the pokemon details and some available pokemon moves.
+
+## :fire: Used technologies
+- Flutter
+- Dart
+- Json Server
+- Flutter Dio
+
+## :man: Contributors
+- @emilioheinz
