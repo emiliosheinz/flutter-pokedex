@@ -7,7 +7,7 @@ class PokemonModel {
   List<PokeTypeEnum> types;
 
   PokemonModel.fromJson(Map jsonMap, List<PokeTypeEnum> types)
-      : name = jsonMap['name'],
+      : name = capitalizeFirstLetter(jsonMap['name']),
         id = jsonMap['id'],
         image = jsonMap['image'],
         types = types;
@@ -22,5 +22,9 @@ class PokemonModel {
     });
 
     return index;
+  }
+
+  static capitalizeFirstLetter(String s) {
+    return '${s[0].toUpperCase()}${s.substring(1)}';
   }
 }

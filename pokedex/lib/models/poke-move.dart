@@ -5,6 +5,10 @@ class PokeMoveModel {
   PokeTypeEnum type;
 
   PokeMoveModel({name, type})
-      : name = name,
+      : name = capitalizeFirstLetter(name),
         type = type;
+
+  static capitalizeFirstLetter(String s) {
+    return '${s[0].toUpperCase()}${s.substring(1)}';
+  }
 }
