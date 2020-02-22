@@ -3,7 +3,7 @@ App that takes a list of pokemons from an API and show them. If you want you can
 
 
 ## :iphone: Preview
-![App preview gif](preview.gif?raw=true)
+![App preview gif](pokedex/preview.gif?raw=true)
 
 ## :fire: Used technologies
 - Flutter
